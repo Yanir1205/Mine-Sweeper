@@ -17,6 +17,8 @@ const SAD_FACE = '😩';
 const THINKER = '🤔';
 const SMILEY = '😎';
 
+var gTimerInterval; //interval for timer rendering
+var gStartTime; //game start time in seconds
 var gHintModeNegsCells = [];
 var gHintModeTimer;
 var gHints = [];
@@ -35,6 +37,8 @@ var gGame = {
 
 function initGame() {
     //changing the smiley to thinker:
+    stopClock();
+    resetClock();
     var elBtn = document.querySelector('.new-game');
     elBtn.innerHTML = THINKER;
 
@@ -53,6 +57,33 @@ function initGame() {
 
     //setting all hints to available
     initHints();
+}
+
+function startClock() { //starts a timer and adds it to the HTML
+    gStartTime = Date.now(); //the start time is now
+    console.log(gStartTime);
+    gGame.secsPassed = 0;
+    gTimerInterval = setInterval(renderTimer, 100); //every second render the timer
+    var timerElem = document.querySelector('.timer'); //grabs the timer element
+    timerElem.innerText = '000';
+
+}
+
+function resetClock() {
+    var timerElem = document.querySelector('.timer'); //grabs the timer element
+    timerElem.innerText = '000';
+}
+
+function renderTimer() { //renders the HTML timer element
+    var timerElem = document.querySelector('.timer'); //grabs the timer element
+    gGame.secsPassed += 1; //the timer model is updated
+    var time = parseInt((Date.now() - gStartTime) / 1000);
+    timerElem.innerText = time;
+}
+
+function stopClock() { //stops the timer and displays a message in the HTML
+    console.log(`End time: \n${Date.now() - gStartTime}`);
+    clearInterval(gTimerInterval);
 }
 
 function setLevel(selectedIdx) {
@@ -159,7 +190,8 @@ function cellClicked(elCell, i, j) {
             //count neighbors
             cell.isShown = true;
             gGame.ShownCount++;
-            renderCell({ i, j }, SHOWN)
+            renderCell({ i, j }, SHOWN);
+            startClock();
             gGame.isOn = true;
             //can't place a mine where user had just clicked
             placeMines();
@@ -201,6 +233,7 @@ function gameOver(elCell) { //if the user clicked a mine
     var elBtn = document.querySelector('.new-game');
     elBtn.innerHTML = SAD_FACE;
     gGame.isOn = false;
+    stopClock();
     var elModal = document.querySelector('.modal');
     elModal.innerText = 'Game Over!';
     elModal.style.display = 'block';
@@ -262,6 +295,7 @@ function endGame() {
     var elModal = document.querySelector('.modal');
     elModal.innerText = 'Victory!';
     elModal.style.display = 'block';
+    stopClock();
 }
 
 function expandShown(board, elCell, posX, posY) {
