@@ -1,0 +1,22 @@
+.table-div {
+    display:none
+}
+
+td.red {
+    background-color: indianred
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    background-position: 0-39px;
+    background-color: rgba(156, 151, 151, 0.712);
+}
+
+.modal {
+    display: none;
+}
+
+img {
+    width: 30px;
+}
