@@ -1,5 +1,43 @@
+body {
+     background-image: url("../img/2.jpg");
+     background-attachment: fixed;
+}
+
+.level {
+    border:solid 1px indigo;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
+} 
+
+.level:hover {
+    /* border: solid 1px rgb(26, 138, 167); */
+    background-color: rgb(35, 117, 165);
+    transition: 1s
+}
+
+.board-container {
+    width: 450px;
+    padding-top: 10%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
 .table-div {
-    display:none
+    display:none;
+    padding:10px;
+    /* background-color: rgb(56, 50, 50); */
+}
+
+.hints {
+    padding: 1px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 td.red {
@@ -13,10 +51,61 @@ td.red {
     background-color: rgba(156, 151, 151, 0.712);
 }
 
+.cell:hover {
+    background-color: rgb(23, 171, 182);
+}
+
+.cell-green {
+    color: green;
+}
+
+.cell-blue {
+    color: blue;
+}
+
+.cell-red{
+    color: red;
+}
+
+.extras {
+    margin-top: 10px;
+}
+
+.lives {
+    margin-top: 10%;
+    background-color: black;
+    color: lightgreen;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-right: 33%;
+    margin-left: 33%;
+    margin-bottom: 10px;
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+    font-style: bold;
+    font-weight: bold;
+    font-size: larger;
+    border-radius: 3px;
+}
+
+.safe-click {
+    background-color: rgb(61, 116, 180);
+    height: 40px;
+    width: 90px;
+}
+
 .modal {
     display: none;
+    font-size: large;
+    font-style: bold;
+    color: rgb(206, 193, 192);
 }
 
 img {
     width: 30px;
+}
+
+.num-of-clicks {
+    font-size: larger;
+    background-color: #fff;
 }

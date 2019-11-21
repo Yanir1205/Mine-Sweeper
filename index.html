@@ -19,6 +19,7 @@
     </div>
     <br>
     <div class="board-container">
+        <div class="records"></div>
         <div class="counters">
             <span class="flag-counter">000</span>
             <span class="restart-Game"><button class="new-game" onclick="initGame()">🤔</button></span>
@@ -32,6 +33,17 @@
             <img class="img 1" src="img/on.jpg" onclick="hintClicked(this)">
             <img class="img 2" src="img/on.jpg" onclick="hintClicked(this)">
             <img class="img 3" src="img/on.jpg" onclick="hintClicked(this)">
+        </div>
+        <div class="extras">
+            <div class="lives"></div>
+            <div class = "buttons">
+                <button class="safe-click" onclick="safeClick(this)">Safe Click</button><br><br><span
+                    class="num-of-clicks">3 Safe Clicks Left</span>
+                <br>
+            </div>
+
+
+
         </div>
         <div class="modal"></div>
     </div>

@@ -4,12 +4,16 @@ function renderBoard(mat) {
         strHTML += '\t<tr>\n';
         for (var j = 0; j < mat[0].length; j++) {
             var cell = UNSHOWN;
+            var cellColorClass = '';
             //if cell is mine and shown - render it as mine
             if (mat[i][j].isMine && mat[i][j].isShown) {
                 cell = MINE;
                 //if cell is a number larger than 0 - render it as the number
             } else if (mat[i][j].minesAroundCount > 0 && mat[i][j].isShown) {
                 cell = mat[i][j].minesAroundCount
+                if (mat[i][j].minesAroundCount === 1) cellColorClass = 'cell-blue';
+                else if (mat[i][j].minesAroundCount === 2) cellColorClass = 'cell-green'
+                else cellColorClass = 'cell-red';
                 //if cell is marked - render it as marked
             } else if (mat[i][j].minesAroundCount === 0 && mat[i][j].isShown) {
                 cell = SHOWN;
@@ -17,7 +21,7 @@ function renderBoard(mat) {
                 cell = FLAG;
             }
             var className = 'cell cell' + i + '-' + j;
-            strHTML += `<td class="${className}" oncontextmenu="cellMarked(this,${i},${j})" onclick="cellClicked(this,${i},${j})">${cell}</td>\n`;
+            strHTML += `<td class="${className} ${cellColorClass}" oncontextmenu="cellMarked(this,${i},${j})" onclick="cellClicked(this,${i},${j})">${cell}</td>\n`;
         }
         strHTML += '</tr>\n'
     }
@@ -51,4 +55,10 @@ function renderCell(location, value) {
     // Select the elCell and set the value
     var elCell = document.querySelector(`.cell${location.i}-${location.j}`);
     elCell.innerHTML = value;
+}
+
+function getRandomLocation() {
+    var posX = getRandomIntInclusive(0, gLevel.size - 1);
+    var posY = getRandomIntInclusive(0, gLevel.size - 1);
+    return { i: posX, j: posY };
 }
