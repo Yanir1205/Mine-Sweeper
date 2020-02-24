@@ -1,6 +1,7 @@
 body {
      background-image: url("../img/2.jpg");
      background-attachment: fixed;
+     margin: 0 auto;
 }
 
 .level {
@@ -10,28 +11,28 @@ body {
     padding: 5px;
     margin-left: 40%;
     margin-right: 40%;
+    margin-top: 25px;
 } 
 
 .level:hover {
-    /* border: solid 1px rgb(26, 138, 167); */
     background-color: rgb(35, 117, 165);
     transition: 1s
 }
 
 .board-container {
-    width: 450px;
     padding-top: 10%;
     text-align: center;
     border-radius: 5px;
     padding: 2%;
-    margin-left: 25%;
-    margin-right: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 .table-div {
     display:none;
     padding:10px;
-    /* background-color: rgb(56, 50, 50); */
 }
 
 .hints {
@@ -77,8 +78,8 @@ td.red {
     color: lightgreen;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-right: 33%;
-    margin-left: 33%;
+    /* margin-right: 33%;
+    margin-left: 33%; */
     margin-bottom: 10px;
     border-top-style: dashed;
     border-bottom-style: dashed;
@@ -108,4 +109,52 @@ img {
 .num-of-clicks {
     font-size: larger;
     background-color: #fff;
+}
+
+
+
+
+.clouds {
+    background: transparent url(https://pluspng.com/img-png/cloud-png-cloud-png-transparent-image-3114.png) repeat top center;
+    z-index: 3;
+    animation: move-clouds-back 200s linear infinite;
+    height: 96vh;
+}
+
+
+
+@keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+
+
+
+@keyframes bouncy {
+    0% {
+        top: 0em
+    }
+    40% {
+        top: 0em
+    }
+    43% {
+        top: -0.9em
+    }
+    46% {
+        top: 0em
+    }
+    48% {
+        top: -0.4em
+    }
+    50% {
+        top: 0em
+    }
+    100% {
+        top: 0em;
+    }
 }
